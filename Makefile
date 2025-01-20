@@ -6,52 +6,56 @@
 #    By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 16:06:38 by arosa-di          #+#    #+#              #
-#    Updated: 2025/01/16 17:30:42 by arosa-di         ###   ########.fr        #
+#    Updated: 2025/01/20 18:56:20 by arosa-di         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -g -Wall -Werror -Wextra
-CC = cc 
-MLX = libft/MLX42/build/libmlx42.a
-MLX_FLAGS = -ldl -lglfw -pthread -lm -lXext
-
 NAME = so_long
 
-LIBFT = libft/lib/libft.a
+SRC_DIR = ./src
+INC_DIR = ./inclunde
 
-SRCS = src/main.c\
-	
-OBJ = $(SRCS:%.c=%.o)
+# List of files
+SRC = src/maps_read.c \
+      src/main.c \
 
-all: $(NAME)
+# Compilers and flags
+CC = cc
+CFLAGS = -I$(INC_DIR) -Ilibft
+MLX_DIR = ./library/minilibx-linux
+CFLAGS = -I./inclunde -I./library/minilibx-linux -I./library/libft
 
-./$(NAME): $(OBJ) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME) $(MLX_FLAGS)
+# Libft directories
+LIBFT_DIR = ./library/libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
+# Link flags
+LDFLAGS = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lX11 -lXext
+
+# Main rule
+all: $(LIBFT) $(NAME)
+
+# Compile the game
+$(NAME): $(SRC)
+	$(CC) $(CFLAGS) $(SRC) $(LIBFT) $(LDFLAGS) -o $(NAME)
+
+# Compile Libft
 $(LIBFT):
-	make -C libft/lib
+	make -C $(LIBFT_DIR)
 
-$(MLX):
-	cmake  -S libft/MLX42 -B libft/MLX42/build
-	cmake  -S libft/MLX42 --build libft/MLX42/build 
-	make -C libft/MLX42/build
-	
-%.o: %.c
-	$(CC) $(CFLAGS) -I include -I libft/lib -I libft/MLX42  -I src/get_next_line -c $< -o $@
-
+# Cleaning
 clean:
-	rm -f $(OBJ)
-	make -C libft/lib clean
-	make -C libft/MLX42/build clean
+	rm -rf $(NAME)
+	make clean -C $(LIBFT_DIR)
 
 fclean: clean
-	rm -f $(NAME)
-	make -C libft/lib fclean
-	rm -rf libft/MLX42/build
+	rm -rf $(NAME)
+	make fclean -C $(LIBFT_DIR)
 
 valgrind: $(EXEC)
 	valgrind --leak-check=full --track-origins=yes ./$(EXEC)
-	
+
+# Rebuild
 re: fclean all
 
 .PHONY: all clean fclean re
