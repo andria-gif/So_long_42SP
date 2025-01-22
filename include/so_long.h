@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:09:41 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/01/20 18:05:31 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:06:55 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include "../library/minilibx-linux/mlx.h"
+# include "../library/libft/libft.h"
+# include <mlx.h>
 
 # define TILE_SIZE 64
 # define MAX_MAP_HEIGHT 100
@@ -50,5 +52,8 @@ enum e_texture_index
 	C_T,
 	E_T
 };
+int		ber_validate(char *name);
+char	**read_map(char *ber);
+int		ofc_check_maps(t_map *map);
 
 #endif

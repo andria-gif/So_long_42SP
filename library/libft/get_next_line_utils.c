@@ -6,13 +6,13 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 17:58:34 by arosa-di          #+#    #+#             */
-/*   Updated: 2024/12/02 19:21:26 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:39:28 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char const *string)
+size_t	ft_strlen_2(char const *string)
 {
 	size_t	i;
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(char const *string)
 	return (i);
 }
 
-char	*ft_strchr(char const *s, int c)
+char	*ft_strchr_2(char const *s, int c)
 {
 	int		i;
 	char	*string_to_search_in;
@@ -42,7 +42,7 @@ char	*ft_strchr(char const *s, int c)
 	return (0);
 }
 
-char	*ft_strjoin(char *str1, char *str2)
+char	*ft_strjoin_2(char *str1, char *str2)
 {
 	char		*concat_string;
 	size_t		i;
@@ -70,7 +70,7 @@ char	*ft_strjoin(char *str1, char *str2)
 	return (concat_string);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr_2(char const *s, unsigned int start, size_t len)
 {
 	char	*new_str;
 	size_t	i;

@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 16:54:30 by arosa-di          #+#    #+#             */
-/*   Updated: 2024/11/06 18:38:45 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/01/21 19:44:39 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ void	ft_striteri(char *s, void (f)(unsigned int, char*));
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
 char	*ft_strnstr(char const *big, char const *little, size_t len);
+char	*get_next_line(int fd);
+int		ft_check_argc(int argc);
 
 #endif

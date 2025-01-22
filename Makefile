@@ -6,56 +6,52 @@
 #    By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 16:06:38 by arosa-di          #+#    #+#              #
-#    Updated: 2025/01/20 18:56:20 by arosa-di         ###   ########.fr        #
+#    Updated: 2025/01/21 17:12:53 by arosa-di         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRC_DIR = ./src
-INC_DIR = ./inclunde
+SRC_DIR = src
+INC_DIR = include
 
-# List of files
-SRC = src/maps_read.c \
-      src/main.c \
+# Lista de arquivos fonte
+SRC = $(SRC_DIR)/maps_read.c \
+      $(SRC_DIR)/main.c
 
-# Compilers and flags
+# Lista de objetos a serem gerados
+OBJS = $(SRC:$(SRC_DIR)/%.c=$(SRC_DIR)/%.o)
+
+# Compilador e flags
 CC = cc
-CFLAGS = -I$(INC_DIR) -Ilibft
-MLX_DIR = ./library/minilibx-linux
-CFLAGS = -I./inclunde -I./library/minilibx-linux -I./library/libft
+CFLAGS = -Wall -Werror -Wextra
+MLX_DIR = library/minilibx-linux
 
-# Libft directories
-LIBFT_DIR = ./library/libft
+# Diretórios da libft
+LIBFT_DIR = library/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-# Link flags
-LDFLAGS = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lX11 -lXext
+# Flags de link
+LDFLAGS = -L $(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lX11 -lXext -lm
 
-# Main rule
-all: $(LIBFT) $(NAME)
+# Regra principal
+all: $(NAME)
 
-# Compile the game
-$(NAME): $(SRC)
-	$(CC) $(CFLAGS) $(SRC) $(LIBFT) $(LDFLAGS) -o $(NAME)
+# Compilar o jogo
+$(NAME): $(OBJS) $(LIBFT)
+	@$(MAKE) -C $(LIBFT_DIR)  # Garantir que a libft seja compilada
+	$(CC) $(CFLAGS) -I $(INC_DIR) -I $(MLX_DIR) -o $(NAME) $(OBJS) $(LIBFT) $(LDFLAGS)
 
-# Compile Libft
-$(LIBFT):
-	make -C $(LIBFT_DIR)
-
-# Cleaning
+# Limpeza
 clean:
-	rm -rf $(NAME)
-	make clean -C $(LIBFT_DIR)
+	rm -rf $(OBJS)
+	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
 	rm -rf $(NAME)
-	make fclean -C $(LIBFT_DIR)
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
-valgrind: $(EXEC)
-	valgrind --leak-check=full --track-origins=yes ./$(EXEC)
-
-# Rebuild
+# Recompilar tudo
 re: fclean all
 
 .PHONY: all clean fclean re

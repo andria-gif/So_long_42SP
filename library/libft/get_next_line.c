@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 17:58:06 by arosa-di          #+#    #+#             */
-/*   Updated: 2024/12/02 19:20:52 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:41:48 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*read_from_fd(int fd, char *content)
 	if (!temp_buffer)
 		return (NULL);
 	read_bytes = 1;
-	while (!ft_strchr(content, '\n') && read_bytes != 0)
+	while (!ft_strchr_2(content, '\n') && read_bytes != 0)
 	{
 		read_bytes = read(fd, temp_buffer, BUFFER_SIZE);
 		if (read_bytes < 0)
@@ -31,7 +31,7 @@ static char	*read_from_fd(int fd, char *content)
 			return (NULL);
 		}
 		temp_buffer[read_bytes] = '\0';
-		content = ft_strjoin(content, temp_buffer);
+		content = ft_strjoin_2(content, temp_buffer);
 	}
 	free(temp_buffer);
 	return (content);
@@ -47,7 +47,7 @@ static char	*extract_line(char *content)
 		return (NULL);
 	while (content[i] && content[i] != '\n')
 		i++;
-	result = ft_substr(content, 0, i + ft_endl(content));
+	result = ft_substr_2(content, 0, i + ft_endl(content));
 	if (!result)
 	{
 		free(result);
@@ -71,7 +71,7 @@ static char	*save_extracted_line(char *content)
 		free(content);
 		return (NULL);
 	}
-	new_content = malloc(sizeof(char) * (ft_strlen(content) - i + 1));
+	new_content = malloc(sizeof(char) * (ft_strlen_2(content) - i + 1));
 	if (!new_content)
 		return (NULL);
 	i++;

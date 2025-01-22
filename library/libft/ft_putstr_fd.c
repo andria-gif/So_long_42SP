@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:55:48 by arosa-di          #+#    #+#             */
-/*   Updated: 2024/11/06 20:20:46 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:54:06 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ void	ft_putstr_fd(char *s, int fd)
 		return ;
 	s_len = ft_strlen(s);
 	write(fd, s, s_len);
+	return (0);
 }
