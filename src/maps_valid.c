@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:22:09 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/01/22 20:06:13 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/01/23 19:04:50 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,41 @@ static int	border_check_maps(t_map *map)
 	return (1);
 }
 
-static int	corridors_check_maps(t_map *map)
+static int	components_check_maps(t_map *map)
 {
+	int	i;
+	int	j;
 
+	i = 0;
+	while (i < map->height)
+	{
+		j = 0;
+		while (j < map->width)
+		{
+			if (map->grid[i][j] != 'P' || map->grid[i][j] != 'E'
+				|| map->grid[i][j] != 'C' || map->grid[i][j]!= 'W'
+					|| map->grid[i][j] != 'O')
+				return (ft_putstr_fd("ERROR: NEED ALL COMPONENTS", 2), 0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
 int	ofc_check_maps(t_map *map)
 {
 	if (!retang_check_maps(map))
 	{
-		return (ft_putstr_fd("[ERROR] MAPS NOT RETANGLE\n", 2), NULL);
+		return (ft_putstr_fd("[ERROR] MAPS NOT RETANGLE\n", 2), 0);
 	}
 	if (!borders_check_maps(map))
 	{
-		return (ft_putstr_fd("[ERROR] INVALID BORDER MAPS\n", 2), NULL);
+		return (ft_putstr_fd("[ERROR] INVALID BORDER MAPS\n", 2), 0);
 	}
-	if (!corridors_check_maps(map))
+	if (!components_check_maps(map))
 	{
-		return (ft_putstr_fd("[ERROR] INVALID CORRIDORS MAPS\n", 2), NULL);
+		return (ft_putstr_fd("ERROR: NEED ALL COMPONENTS", 2), 0);
 	}
 	return (map);
 }
