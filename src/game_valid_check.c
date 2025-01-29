@@ -1,24 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   game_valid_check.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 18:55:48 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/01/28 16:40:51 by arosa-di         ###   ########.fr       */
+/*   Created: 2025/01/29 16:29:17 by arosa-di          #+#    #+#             */
+/*   Updated: 2025/01/29 16:29:41 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	int		s_len;
-
-	if (!s)
-		return ;
-	s_len = ft_strlen(s);
-	write(fd, s, s_len);
-	return ;
-}
+#include "../include/so_long.h"

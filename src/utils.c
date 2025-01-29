@@ -1,14 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_argc.c                                    :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/21 19:32:56 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/01/21 19:44:18 by arosa-di         ###   ########.fr       */
+/*   Created: 2025/01/28 16:39:13 by arosa-di          #+#    #+#             */
+/*   Updated: 2025/01/28 16:43:51 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../include/so_long.h"
 
 int	ft_check_argc(int argc)
 {
@@ -17,4 +19,5 @@ int	ft_check_argc(int argc)
 		ft_putstr_fd("Bad request", 2);
 		exit(1);
 	}
+	return (0);
 }

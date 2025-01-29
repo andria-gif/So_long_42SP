@@ -6,11 +6,12 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 17:58:34 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/01/21 16:39:28 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:53:14 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "libft.h"
 
 size_t	ft_strlen_2(char const *string)
 {

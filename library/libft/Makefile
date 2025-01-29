@@ -6,7 +6,7 @@
 #    By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/15 20:39:01 by arosa-di          #+#    #+#              #
-#    Updated: 2025/01/21 19:35:12 by arosa-di         ###   ########.fr        #
+#    Updated: 2025/01/28 16:51:31 by arosa-di         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,9 +47,9 @@ FILE = ft_isalpha.c \
 	ft_substr.c \
 	ft_strtrim.c \
 	ft_split.c \
-	ft_striteri.c\
-	get_next_line.c \
-	ft_check_argc.c \
+	ft_striteri.c \
+	get_next_line_utils.c \
+	get_next_line.c
 
 OBJS = $(FILE:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 16:54:30 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/01/21 19:44:39 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:50:55 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "get_next_line.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
@@ -51,7 +52,12 @@ void	ft_striteri(char *s, void (f)(unsigned int, char*));
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
 char	*ft_strnstr(char const *big, char const *little, size_t len);
+size_t	ft_strlen_2(char const *string);
+char	*ft_strchr_2(const char *str, int ch);
+char	*ft_strjoin_2(char *str1, char *str2);
+char	*ft_substr_2(char const *s, unsigned int start, size_t len);
+int		ft_endl(char	*buffer);
 char	*get_next_line(int fd);
-int		ft_check_argc(int argc);
+char	*get_next_line(int fd);
 
 #endif
