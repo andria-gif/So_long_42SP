@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:09:41 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/01/29 16:29:49 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/02/04 20:03:03 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ typedef struct s_game
 {
 	void		*mlx;
 	int			moves_count;
+	int			*moves_next;
 	int			*moves_text;
 	int			*imgs[5];
 	void		*map;
-	int			collectibles_count;
+	//int			collectibles_count;
 	void		*copy_maps;
+	t_map		*map;
 }	t_game;
 
 typedef struct s_map
@@ -43,10 +45,11 @@ typedef struct s_map
 	char	**grid;
 	int		width;
 	int		height;
-	//int		collectibles_count;
+	int		collectibles_count;
 	int		player_in_x;
 	int		player_in_y;
 	int		exits;
+	t_game	*game;
 }	t_map;
 
 enum e_texture_index

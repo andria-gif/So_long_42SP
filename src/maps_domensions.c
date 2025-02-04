@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:04:05 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/02/03 13:37:58 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:15:44 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,29 @@ int	calculate_dimensions_screen_maps(t_map *map)
 
 int	calulete_dimensions_maps(t_map	*map, int max_swidth, int max_sheight)
 {
-		///em andamento
+	int	max_width;
+	int	heigth;
+	int	current_width;
+
+	max_width = 0;
+	heigth = 0;
+	while (map->grid[heigth])
+	{
+		current_width = ft_strlen(map->grid[heigth]);
+		if (current_width > max_width)
+			max_width = current_width;
+		heigth++;
+	}
+	map->height = heigth;
+	map->width = max_width;
+	while (max_width * TILE_SIZE > max_swidth
+		|| heigth * TILE_SIZE > max_sheight)
+	{
+		ft_putstr_fd("[ERROR] Map too large for screen\n", 2);
+		free_copy_maps(map->grid, map->height);
+		map->grid = NULL;
+		return (0);
+	}
+	return (1);
 }
+
