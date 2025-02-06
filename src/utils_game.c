@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:39:13 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/02/04 20:31:50 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/02/05 21:36:03 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,25 @@ void	init_components_maps(t_map	*map, int *p, int *e)
 	map->collectibles_count = 0;
 }
 
-// void	free_game(t_game *game)
-// {
-// 	t_map	*map;
+void	to_clean_game(t_game *game)
+{
+	int		i;
 
-	
-// 		mlx_destroy_image(game->mlx, game->);
-// }
+	i = 0;
+	while (game->map[i])
+		free(game->map[i++]);
+	free(game->mlx);
+	mlx_destroy_image(game->mlx, game->player);
+	mlx_destroy_image(game->mlx, game->wall);
+	mlx_destroy_image(game->mlx, game->floor);
+	mlx_destroy_image(game->mlx, game->door);
+	mlx_destroy_image(game->mlx, game->collect);
+	mlx_destroy_window(game->mlx, game->window);
+	free(game->mlx);
+	exit(0);
+}
+
+int	error_game(t_map *map, t_game game)
+{
+	if (!map)
+}

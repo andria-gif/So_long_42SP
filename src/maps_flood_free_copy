@@ -6,41 +6,13 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:44:02 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/01/29 16:28:02 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:14:33 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-char	copy_the_original_maps(char **mapsOriginal, int heigth)
-{
-	char	**maps_copy;
-	int		i;
-	int		j;
-
-	i = 0;
-	maps_copy = malloc(sizeof(char *) * (heigth + 1));
-	if (!maps_copy)
-		return (NULL);
-	while (i < heigth)
-	{
-		maps_copy[i] = ft_strdup(mapsOriginal[i]);
-		if (!maps_copy)
-		{
-			j = i - 1;
-			while (j >= 0)
-				free(maps_copy[--j]);
-			free(maps_copy);
-			return (ft_putstr_fd("[ERR0R]FAILED TO COPY \
-			ORIGINAL MAP\n", 2), NULL);
-		}
-		i++;
-	}
-	maps_copy[i] = NULL;
-	return (maps_copy);
-}
-
-int	free_copy_maps(char **grid, int heigth)
+int	free_maps(char **grid, int heigth)
 {
 	int	i;
 
@@ -55,7 +27,7 @@ int	free_copy_maps(char **grid, int heigth)
 	free(grid);
 }
 
-int	flod_fill_maps(t_game *game, char **maps, int x, int y)
+int	check_visit_maps(t_game *game, char **maps, int x, int y)
 {
 	// if (x > 0 || y < 0 || !maps[y] || x >= (int)ft_strlen
 	// 	|| maps[x][y] == 1 || maps[x][y] == "V")
@@ -75,6 +47,7 @@ int	flod_fill_maps(t_game *game, char **maps, int x, int y)
 // }
 	if (x > 0 || y < 0 || !maps[y] || x >= (int)ft_strlen
 		|| maps[x][y] == 1 || maps[x][y] == "V")
+		return (0);
 	if (maps[y][x] == 'C')
         game->collectibles_count--;
         maps[y][x] = 'V';

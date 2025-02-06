@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:04:05 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/02/04 19:15:44 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/02/05 18:41:01 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,3 @@ int	calulete_dimensions_maps(t_map	*map, int max_swidth, int max_sheight)
 	}
 	return (1);
 }
-
