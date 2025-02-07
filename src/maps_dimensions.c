@@ -21,6 +21,7 @@ int	get_map_widith(char **map_map)
 		return (0);
 	return (ft_strlen(map[0] - 1));
 }
+//ababora
 
 int	get_map_height(char **map_map)
 {
