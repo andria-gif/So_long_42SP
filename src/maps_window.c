@@ -12,11 +12,13 @@
 
 #include "../include/so_long.h"
 
-int	main_window(void)
+int	window(int argc, char **argv)
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
 
+	if (argc && argv)
+		printf("Ok\n");
 	mlx_ptr = mlx_init();
 	if (mlx_ptr == NULL)
 		return (1);

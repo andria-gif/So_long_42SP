@@ -35,23 +35,21 @@ void	load_textures(t_game *game) //função para carregar as texturas
 	}
 }
 
-void	download_img_maps(t_game *game, int size, int x, int y) //função para alocar as imagens no mapa
+void	download_img_maps(t_game *game, int tile, int x, int y)
 {
-	t_map	*map;
-
-	if (map->grid[x][y] == -1)
+	if (tile == -1)
 		mlx_put_image_to_window(game->mlx, game->window,
 			game->floor, y * TILE_SIZE, x * TILE_SIZE);
-	else if (map->grid[x][y] == 0)
+	else if (tile == 0)
 		mlx_put_image_to_window(game->mlx, game->window,
 			game-> wall, y * TILE_SIZE, x * TILE_SIZE);
-	else if (map->grid[x][y] == 'P')
+	else if (tile == 'P')
 		mlx_put_image_to_window(game->mlx, game->window,
 			game-> player, y * TILE_SIZE, x * TILE_SIZE);
-	else if (map->grid[x][y] == 'C')
+	else if (tile == 'C')
 		mlx_put_image_to_window(game->mlx, game->window,
 			game->collect, y * TILE_SIZE, x * TILE_SIZE);
-	else if (map->grid[x][y] == 'E')
+	else if (tile == 'E')
 		mlx_put_image_to_window(game->mlx, game->window,
 			game->door, y * TILE_SIZE, x * TILE_SIZE);
 }
@@ -67,10 +65,9 @@ void	download_map_2(t_game *game, t_map *map) //função bi dimensional para alo
 		y = 0;
 		while (y < map->width)
 		{
-			download_img_maps(game, TILE_SIZE, x, y);
+			download_img_maps(game, map->grid[x][y], x, y);
 			y++;
 		}
 		x++;
 	}
 }
-

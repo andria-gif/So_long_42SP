@@ -12,11 +12,12 @@
 
 #include "../include/so_long.h"
 
-int	ft_check_argc(int argc)
+int	ft_check_argc(int argc, t_game *game)
 {
 	if (argc != 2)
 	{
 		ft_putstr_fd("Bad request", 2);
+		free(game);
 		exit(1);
 	}
 	return (0);
@@ -47,7 +48,7 @@ void	to_clean_game(t_game *game)
 	exit(0);
 }
 
-int	error_game(t_map *map, t_game game)
-{
-	if (!map)
-}
+// int	error_game(t_map *map, t_game game)
+// {
+// 	if (!map)
+// }

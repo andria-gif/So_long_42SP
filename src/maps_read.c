@@ -12,15 +12,15 @@
 
 #include "../include/so_long.h"
 
-int	ber_validate(char *name)
-{
-	size_t	len;
+// int	ber_validate(char *name)
+// {
+// 	size_t	len;
 
-	len = ft_strlen(name);
-	if (len < 4)
-		return (0);
-	return (ft_strncmp(name + len - 4, ".ber", 4) == 0);
-}
+// 	len = ft_strlen(name);
+// 	if (len < 4)
+// 		return (0);
+// 	return (ft_strncmp(name + len - 4, ".ber", 4) == 0);
+// }
 
 char	**read_map(char *ber)
 {
@@ -30,8 +30,8 @@ char	**read_map(char *ber)
 	int		i;
 
 	i = 0;
-	if (!ber_validate(ber))
-		return (ft_putstr_fd("[ERROR] INVALID FILE FORMAT .ber\n", 2), NULL);
+	// if (!ber_validate(ber))
+	// 	return (ft_putstr_fd("[ERROR] INVALID FILE FORMAT .ber\n", 2), NULL);
 	fd = open(ber, O_RDONLY);
 	if (fd < 0)
 		return (ft_putstr_fd("[ERROR] CANNOT OPEN FILE\n", 2), NULL);
