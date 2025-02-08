@@ -30,8 +30,6 @@ char	**read_map(char *ber)
 	int		i;
 
 	i = 0;
-	// if (!ber_validate(ber))
-	// 	return (ft_putstr_fd("[ERROR] INVALID FILE FORMAT .ber\n", 2), NULL);
 	fd = open(ber, O_RDONLY);
 	if (fd < 0)
 		return (ft_putstr_fd("[ERROR] CANNOT OPEN FILE\n", 2), NULL);

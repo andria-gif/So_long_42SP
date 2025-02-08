@@ -12,22 +12,16 @@
 
 #include "../include/so_long.h"
 
-int	ft_check_argc(int argc, t_game *game)
+void	init_game(t_game *game)
 {
-	if (argc != 2)
-	{
-		ft_putstr_fd("Bad request", 2);
-		free(game);
-		exit(1);
-	}
-	return (0);
-}
+	int	i;
 
-void	init_components_maps(t_map	*map, int *p, int *e)
-{
-	*p = 0;
-	*e = 0;
-	map->collectibles_count = 0;
+	i = -1;
+	game->mlx = NULL;
+	game->moves_count = 0;
+	game->map = NULL;
+	while (++i < 5)
+		game->imgs[i] = NULL;
 }
 
 void	to_clean_game(t_game *game)
@@ -46,6 +40,14 @@ void	to_clean_game(t_game *game)
 	mlx_destroy_window(game->mlx, game->window);
 	free(game->mlx);
 	exit(0);
+}
+
+void	exit_game(void *game)
+{
+	t_game	*game_ptr;
+
+	game_ptr = (t_game *)game;
+	to_clean_game(game_ptr);
 }
 
 // int	error_game(t_map *map, t_game game)

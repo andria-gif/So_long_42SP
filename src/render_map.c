@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:12:44 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/02/07 17:36:22 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/02/08 19:11:13 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,3 +65,5 @@ void	loading_img(t_game *game, void **img, char *path)
 		exit(1);
 	}
 }
+
+

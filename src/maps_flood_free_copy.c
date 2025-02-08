@@ -12,13 +12,13 @@
 
 #include "../include/so_long.h"
 
-void free_copy_maps(char **copy, int height)
+void	free_copy_maps(char **copy, int height)
 {
-	int i;
+	int	i;
 
 	if (!copy)
-		return;
-	for (i = 0; i < height; i++)
+		return ;
+	for	(i = 0; i < height; i++)
 	{
 		if (copy[i])
 			free(copy[i]);

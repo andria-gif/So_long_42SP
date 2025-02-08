@@ -12,25 +12,48 @@
 
 #include "../include/so_long.h"
 
-int	window(int argc, char **argv)
+static int	get_map_widith(t_game *map)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
+	size_t	i;
 
-	if (argc && argv)
-		printf("Ok\n");
-	mlx_ptr = mlx_init();
-	if (mlx_ptr == NULL)
-		return (1);
-	win_ptr = mlx_new_window(mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "window");
+	i = 0;
+	while (map->map[i])
+		i++;
+	return (i);
+}
+
+static int	get_map_height(t_game *map)
+{
+	int		i;
+
+	i = 0;
+	if (map->map != NULL && map->map[i] != NULL)
+	{
+		while (map->map[0][i])
+		{
+			i++;
+		}
+	}
+	return (i);
+}
+
+int	window(t_game *game)
+{
+	void	*win_ptr;
+	int		win_width;
+	int		win_height;
+
+	win_height = get_map_height(game);
+	win_width = get_map_widith(game);
+	win_ptr = mlx_new_window(game->mlx_ptr, win_width * TILE_SIZE,
+			win_height * TILE_SIZE, "window");
 	if (win_ptr == NULL)
 	{
 		free(win_ptr);
 		return (1);
 	}
-	mlx_loop(mlx_ptr);
-	mlx_destroy_window(mlx_ptr, win_ptr);
-	mlx_destroy_display(mlx_ptr);
-	free(mlx_ptr);
+	// mlx_destroy_window(mlx_ptr, win_ptr);
+	// mlx_destroy_display(mlx_ptr);
+	// free(mlx_ptr);
 	return (0);
 }

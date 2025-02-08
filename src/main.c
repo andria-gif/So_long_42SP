@@ -12,10 +12,9 @@
 
 #include "../include/so_long.h"
 
-int	initializer_game(t_game *game, char *map_path)
+void	initializer_game(t_game *game, char *map_path)
 {
-	int	map_heigth;
-	int	map_widith;
+	int	map_dimensions;
 
 	game->mlx = mlx_init();
 	if (!game->mlx)
@@ -24,27 +23,37 @@ int	initializer_game(t_game *game, char *map_path)
 		exit(1);
 	}
 	game->mlx = read_map(map_path);
+	map_dimensions = window(game);
 	if (!game->map)
 	{
 		ft_putstr_fd("Error\nMap not loaded\n", 19);
 		exit(1);
 	}
-
-	
-	// map_heigth = get_map_height(game->map);
-	// map_widith = get_map_widith(game->map);
-	// if (!unity_dimenssions_map(game->map, map_widith, map_heigth))
-	// 	exit(1);
-	
+	init_game(game);
+	game->player_in_x = player_position_x(game->map);
+	game->collectibles_count = count_chars_game(*game->map, 'C');
+	// game->window = mlx_new_window(game->mlx, game->width,
+	// 		game->height, "so_long");
+	load_textures(game);
 }
 
-// int	main(int argc, char *argv[])
-// {
-// 	t_game	*game;
+int	main(int argc, char **argv)
+{
+	t_game	*game;
 
-// 	ft_check_argc(argc);
-	
-// 	render_map_2(game, 0, 0);
-
-
-// }
+	game = malloc(sizeof(t_game) *1 );
+	if (!game)
+		return (1);
+	if (argc != 2)
+	{
+		ft_putstr_fd("Error\nInvalid number of arguments\n", 33);
+		exit(1);
+	}
+	initializer_game(game, argv[1]);
+	load_textures(game);
+	render_map_2(game, 0, 0);
+	//mlx_hook(game->window, 2, 1L << 0, key_hook, game);
+	mlx_loop(game->mlx);
+	exit_game(game);
+	return (0);
+}
