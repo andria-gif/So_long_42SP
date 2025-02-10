@@ -60,10 +60,10 @@ void	download_map_2(t_game *game) //função bi dimensional para alocar as image
 	int	y;
 
 	x = 0;
-	while (x < game->height)
+	while (x < game->map_height)
 	{
 		y = 0;
-		while (y < game->width)
+		while (y < game->map_width)
 		{
 			download_img_maps(game, game->map[x][y], x, y);
 			x++;
@@ -92,9 +92,15 @@ void	load_img(t_game *game, void **img, char *path) //funçã
 
 void	init_img(t_game *game)
 {
-	load_img(game, &game->player, "./textures/player.xpm");
-	load_img(game, &game->door, "./textures/door.xpm");
-	load_img(game, &game->collect, "./textures/collect.xpm");
-	load_img(game, &game->floor , "./textures/floor.xpm");
-	load_img(game, &game->wall ,"./textures/wall.xpm");
+	// load_img(game, &game->player, "./textures/player.xpm");
+	// load_img(game, &game->door, "./textures/door.xpm");
+	// load_img(game, &game->collect, "./textures/collect.xpm");
+	// load_img(game, &game->floor , "./textures/floor.xpm");
+	// load_img(game, &game->wall ,"./textures/wall.xpm");
+	load_img(game,(void **) &game->player, "./textures/player.xpm");
+	load_img(game,(void **) &game->door, "./textures/door.xpm");
+	load_img(game,(void **) &game->collect, "./textures/collect.xpm");
+	load_img(game,(void **) &game->floor, "./textures/floor.xpm");
+	load_img(game,(void **) &game->wall, "./textures/wall.xpm");
 }
+

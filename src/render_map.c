@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:12:44 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/02/10 15:41:10 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:59:08 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,15 @@ int	render_map(t_game *game, char tile, int x, int y)
 	return (0);
 }
 
-int	render_map_2(t_game *game, int x, int y)
+int	render_map_2(t_game *game)
 {
+	int	x;
+	int	y;
+
 	y = 0;
 	while (game->map[y])
 	{
-		printf("aqui fdp render 4\n");
 		x = 0;
-		printf("Linha %d\n", y);
 		while (game->map[y][x])
 		{
 			render_map(game, game->map[y][x], x, y);

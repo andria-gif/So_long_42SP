@@ -14,7 +14,8 @@
 
 void	initializer_game(t_game *game, char *map_path)
 {
-	int	map_h_w= 0;
+	int	map_h_w;
+	map_h_w = 0;
 
 	game->mlx = mlx_init();
 	if (!game->mlx)
@@ -33,15 +34,14 @@ void	initializer_game(t_game *game, char *map_path)
 	game->player_in_y = player_position_y(game->map);
 	game->collectibles = count_chars_game(game->map, 'C');
 	map_h_w = dimenssions_map(game);
-	game->window = mlx_new_window(game->mlx, game->width * TILE_SIZE,
-			game->height * TILE_SIZE, "window");
+	game->window = mlx_new_window(game->mlx, game->map_width * TILE_SIZE,
+			game->map_height * TILE_SIZE, "window");
 	load_textures(game);
 }
 
 int	main(int argc, char **argv)
 {
 	t_game	*game;
-	// void	*win_ptr;
 
 	game = malloc(sizeof(t_game) * 1);
 	if (!game)
@@ -54,7 +54,8 @@ int	main(int argc, char **argv)
 	}
 	initializer_game(game, argv[1]);
 	init_img(game);
-	render_map_2(game, 0, 0);
+	render_map_2(game);
+	mlx_key_hook(game->window, handle_keypress, game);
 	mlx_hook(game->window, 17, 1L << 17, exit_game, game);
 	mlx_loop(game->mlx);
 	exit_game(game);

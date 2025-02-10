@@ -17,9 +17,9 @@ static int	retang_check_maps(t_game *game)
 	int	i;
 
 	i = 1;
-	while (i < game -> height)
+	while (i < game -> map_height)
 	{
-		if ((int) ft_strlen(game->map[i]) != game->width)
+		if ((int) ft_strlen(game->map[i]) != game->map_width)
 		{
 			return (0);
 		}
@@ -35,18 +35,18 @@ static int	border_check_maps(t_game *game)
 	i = 0;
 	if (!retang_check_maps(game))
 		return (0);
-	while (i < game->width)
+	while (i < game->map_width)
 	{
-		if (game->map[0][i] != '1' || game->map[game->height - 1][i] != '1')
+		if (game->map[0][i] != '1' || game->map[game->map_height - 1][i] != '1')
 		{
 			return (0);
 		}
 		i++;
 	}
 	i = 0;
-	while (i < game->width)
+	while (i < game->map_width)
 	{
-		if (game->map[i][0] != '1' || game->map[i][game->width - 1] != '1')
+		if (game->map[i][0] != '1' || game->map[i][game->map_width - 1] != '1')
 		{
 			return (0);
 		}
@@ -61,10 +61,10 @@ static int	components_check_maps(t_game *game)
 	int	j;
 
 	i = 0;
-	while (i < game->height)
+	while (i < game->map_height)
 	{
 		j = 0;
-		while (j < game->width)
+		while (j < game->map_height)
 		{
 			if (game->map[i][j] != 'P' && game->map[i][j] != 'E'
 				&& game->map[i][j] != 'C' && game->map[i][j]!= '1'

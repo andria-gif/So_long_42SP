@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-static int	get_map_widith(t_game *game)
+int	get_map_widith(t_game *game)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ static int	get_map_widith(t_game *game)
 	return (i);
 }
 
-static int	get_map_height(t_game *game)
+int	get_map_height(t_game *game)
 {
 	int	i;
 
@@ -39,9 +39,9 @@ static int	get_map_height(t_game *game)
 
 int	dimenssions_map(t_game *game)
 {
-	game->width = get_map_height(game);
-	game->height = get_map_widith(game);
-	game->width -= 2;
+	game->map_width = get_map_height(game);
+	game->map_height = get_map_widith(game);
+	game->map_width -= 2;
 	// mlx_destroy_window(mlx_ptr, win_ptr);
 	// mlx_destroy_display(mlx_ptr);
 	// free(mlx_ptr);

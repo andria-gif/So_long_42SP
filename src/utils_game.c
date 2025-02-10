@@ -12,18 +12,6 @@
 
 #include "../include/so_long.h"
 
-// void	init_game(t_game *game)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	game->moves_count = 0;
-// 	while (++i < 5)
-// 	{
-// 		game->imgs[i] = NULL;
-// 	}
-// }
-
 void	to_clean_game(t_game *game)
 {
 	int		i;
@@ -50,8 +38,8 @@ int	exit_game(void *game)
 	to_clean_game(game_ptr);
 	exit(0);
 }
-
-// int	error_game(t_map *map, t_game game)
+// int		error_valid_map(t_game *game)
 // {
-// 	if (!map)
+
+
 // }
