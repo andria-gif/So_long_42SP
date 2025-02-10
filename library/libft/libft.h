@@ -58,6 +58,9 @@ char	*ft_strjoin_2(char *str1, char *str2);
 char	*ft_substr_2(char const *s, unsigned int start, size_t len);
 int		ft_endl(char	*buffer);
 char	*get_next_line(int fd);
-char	*get_next_line(int fd);
+char	ft_extract_line(char rl);
+char	*ft_check_buffer(int fd, char **rl);
+char	*ft_get_temp(int bytes_read, char *buffer, char *rl);
+
 
 #endif

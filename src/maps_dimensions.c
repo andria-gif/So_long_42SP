@@ -1,81 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   maps_domensions.c                                  :+:      :+:    :+:   */
+/*   maps_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 12:04:05 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/02/05 18:41:01 by arosa-di         ###   ########.fr       */
+/*   Created: 2025/01/28 17:03:24 by arosa-di          #+#    #+#             */
+/*   Updated: 2025/01/28 17:19:06 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// int	unity_dimenssions_map(char **maps, t_map map)
-// {
-// 	int	*max_width;
-// 	int	*max_height;
+static int	get_map_widith(t_game *game)
+{
+	int	i;
 
-// 	map.height = get_map_height(map.grid);
-// 	map.width = get_map_widith(map.grid);
-// 	mlx_get_screen_size(0, max_width, max_height);
-// 	if (max_width == 0 || max_height == 0)
-// 	{
-// 		max_width = 1920;
-// 		max_height = 1080;
-// 	}
-// 	if (map.width * TILE_SIZE > max_width
-// 		|| map.height * TILE_SIZE > max_height)
-// 	{
-// 		ft_putstr_fd("[ERROR] Map too large for screen\n", 2);
-// 		free_copy_maps(map.grid, map.height);
-// 		map.grid = NULL;
-// 		return (0);
-// 	}
-// 	return (1);
-// }
+	i = 0;
+	while (game->map[i] && game->map[i] != NULL)
+		i++;
+	return (i);
+}
 
+static int	get_map_height(t_game *game)
+{
+	int	i;
 
-// int	calculate_dimensions_screen_maps(t_map *map)
-// {
-// 	(void)map;
-// 	int	max_width;
-// 	int	max_height;
+	i = 0;
+	if (game->map != NULL && game->map[i] != NULL)
+	{
+		while (game->map[0][i])
+		{
+			i++;
+		}
+	}
+	return (i);
+}
 
-// 	mlx_get_monitor_size(0, &max_width, &max_height);
-// 	if (max_width == 0 || max_height == 0)
-// 	{
-// 		max_width = 1920;
-// 		max_height = 1080;
-// 	}
-// 	return (1);
-// }
-
-// int	calulete_dimensions_maps(t_map	*map, int max_swidth, int max_sheight)
-// {
-// 	int	max_width;
-// 	int	heigth;
-// 	int	current_width;
-
-// 	max_width = 0;
-// 	heigth = 0;
-// 	while (map->grid[heigth])
-// 	{
-// 		current_width = ft_strlen(map->grid[heigth]);
-// 		if (current_width > max_width)
-// 			max_width = current_width;
-// 		heigth++;
-// 	}
-// 	map->height = heigth;
-// 	map->width = max_width;
-// 	while (max_width * TILE_SIZE > max_swidth
-// 		|| heigth * TILE_SIZE > max_sheight)
-// 	{
-// 		ft_putstr_fd("[ERROR] Map too large for screen\n", 2);
-// 		free_copy_maps(map->grid, map->height);
-// 		map->grid = NULL;
-// 		return (0);
-// 	}
-// 	return (1);
-// }
+int	dimenssions_map(t_game *game)
+{
+	game->width = get_map_height(game);
+	game->height = get_map_widith(game);
+	game->width -= 2;
+	// mlx_destroy_window(mlx_ptr, win_ptr);
+	// mlx_destroy_display(mlx_ptr);
+	// free(mlx_ptr);
+	return (0);
+}

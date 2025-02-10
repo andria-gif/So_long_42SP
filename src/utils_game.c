@@ -17,11 +17,11 @@ void	init_game(t_game *game)
 	int	i;
 
 	i = -1;
-	game->mlx = NULL;
 	game->moves_count = 0;
-	game->map = NULL;
 	while (++i < 5)
+	{
 		game->imgs[i] = NULL;
+	}
 }
 
 void	to_clean_game(t_game *game)
@@ -42,12 +42,13 @@ void	to_clean_game(t_game *game)
 	exit(0);
 }
 
-void	exit_game(void *game)
+int	exit_game(void *game)
 {
 	t_game	*game_ptr;
 
 	game_ptr = (t_game *)game;
 	to_clean_game(game_ptr);
+	return (0);
 }
 
 // int	error_game(t_map *map, t_game game)

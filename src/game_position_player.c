@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 17:32:14 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/02/08 20:26:02 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/02/09 22:18:02 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	player_position_x(char **map)
 	int	y;
 
 	y = 0;
-	while (map[y])
+	while (map && map[y])
 	{
 		x = 0;
 		while (map[y][x])
@@ -37,17 +37,17 @@ int	player_position_y(char **map)
 	int	x;
 	int	y;
 
-	x = 0;
-	while (map[x])
+	y = 0;
+	while (map && map[y])
 	{
-		y = 0;
+		x = 0;
 		while (map[y][x])
 		{
 			if (map[y][x] == 'P')
 				return (y);
-			y++;
+			x++;
 		}
-		x++;
+		y++;
 	}
 	return (-1);
 }

@@ -12,14 +12,14 @@
 
 #include "../include/so_long.h"
 
-static int	retang_check_maps(t_map *map)
+static int	retang_check_maps(t_game *game)
 {
 	int	i;
 
 	i = 1;
-	while (i < map -> height)
+	while (i < game -> height)
 	{
-		if ((int) ft_strlen(map->grid[i]) != map->width)
+		if ((int) ft_strlen(game->map[i]) != game->width)
 		{
 			return (0);
 		}
@@ -28,25 +28,25 @@ static int	retang_check_maps(t_map *map)
 	return (1);
 }
 
-static int	border_check_maps(t_map *map)
+static int	border_check_maps(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	if (!retang_check_maps(map))
+	if (!retang_check_maps(game))
 		return (0);
-	while (i < map -> width)
+	while (i < game->width)
 	{
-		if (map->grid[0][i] != '1' || map->grid[map->height - 1][i] != '1')
+		if (game->map[0][i] != '1' || game->map[game->height - 1][i] != '1')
 		{
 			return (0);
 		}
 		i++;
 	}
 	i = 0;
-	while (i < map -> width)
+	while (i < game->width)
 	{
-		if (map->grid[i][0] != '1' || map->grid[i][map->width - 1] != '1')
+		if (game->map[i][0] != '1' || game->map[i][game->width - 1] != '1')
 		{
 			return (0);
 		}
@@ -55,20 +55,20 @@ static int	border_check_maps(t_map *map)
 	return (1);
 }
 
-static int	components_check_maps(t_map *map)
+static int	components_check_maps(t_game *game)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < map->height)
+	while (i < game->height)
 	{
 		j = 0;
-		while (j < map->width)
+		while (j < game->width)
 		{
-			if (map->grid[i][j] != 'P' && map->grid[i][j] != 'E'
-				&& map->grid[i][j] != 'C' && map->grid[i][j]!= '1'
-					&& map->grid[i][j] != 'O')
+			if (game->map[i][j] != 'P' && game->map[i][j] != 'E'
+				&& game->map[i][j] != 'C' && game->map[i][j]!= '1'
+					&& game->map[i][j] != 'O')
 				return (ft_putstr_fd("ERROR: NEED ALL COMPONENTS", 2), 0);
 			j++;
 		}
@@ -77,19 +77,24 @@ static int	components_check_maps(t_map *map)
 	return (1);
 }
 
-int	ofc_check_maps(t_map *map)
+int	ofc_check_maps(t_game *game)
 {
-	if (!retang_check_maps(map))
+	game = malloc(sizeof(t_game) * 1);
+	if (!retang_check_maps(game))
 	{
 		return (ft_putstr_fd("[ERROR] MAPS NOT RETANGLE\n", 2), 0);
 	}
-	if (!border_check_maps(map))
+	if (!border_check_maps(game))
 	{
 		return (ft_putstr_fd("[ERROR] INVALID BORDER MAPS\n", 2), 0);
 	}
-	if (!components_check_maps(map))
+	if (!components_check_maps(game))
 	{
 		return (ft_putstr_fd("ERROR: NEED ALL COMPONENTS", 2), 0);
+	}
+	if (!flood_fill_maps(game, game->map, game->player_in_x, game->player_in_y))
+	{
+		return (ft_putstr_fd("[ERROR] MAPS NOT VISITED\n", 2), 0);
 	}
 	return (1);
 }

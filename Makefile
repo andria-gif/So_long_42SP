@@ -9,6 +9,7 @@
 #    Updated: 2025/02/05 18:09:51 by arosa-di         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 # Add the directory for the source files
 VPATH = $(MAPA_DIR)
 

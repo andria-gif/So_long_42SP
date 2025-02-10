@@ -20,7 +20,7 @@ void	load_textures(t_game *game) //função para carregar as texturas
 	game->player = mlx_xpm_file_to_image(game->mlx,
 			"./textures/player.xpm", &size, &size);
 	game->door = mlx_xpm_file_to_image(game->mlx,
-			"./textures/dor.xpm", &size, &size);
+			"./textures/door.xpm", &size, &size);
 	game->collect = mlx_xpm_file_to_image(game->mlx,
 			"./textures/collect.xpm", &size, &size);
 	game->floor = mlx_xpm_file_to_image(game->mlx,
@@ -54,20 +54,47 @@ void	download_img_maps(t_game *game, int tile, int x, int y)
 			game->door, y * TILE_SIZE, x * TILE_SIZE);
 }
 
-void	download_map_2(t_game *game, t_map *map) //função bi dimensional para alocar as imagens no mapa
+void	download_map_2(t_game *game) //função bi dimensional para alocar as imagens no mapa
 {
 	int	x;
 	int	y;
 
-	x = 0;
-	while (x < map->height)
+	y = 0;
+	while (x < game->height)
 	{
-		y = 0;
-		while (y < map->width)
+		x = 0;
+		while (y < game->width)
 		{
-			download_img_maps(game, map->grid[x][y], x, y);
-			y++;
+			download_img_maps(game, game->map[x][y], x, y);
+			x++;
 		}
-		x++;
+		y++;
 	}
+	mlx_do_sync(game->mlx);
+}
+
+void	load_img(t_game *game, void **img, char *path) //funçã
+{
+	int	img_x;
+	int	img_y;
+
+	img_x = TILE_SIZE;
+	img_y = TILE_SIZE;
+	*img = mlx_xpm_file_to_image(game->mlx , path ,&img_x, &img_y);
+	if (!img)
+	{
+		write(2, "Error: Failed to load ", 24);
+		write(2, path, ft_strlen(path));
+		write(2, "\n", 1);
+		exit(1);
+	}
+}
+
+void	init_img(t_game *game)
+{
+	load_img(game, &game->player, "./textures/player.xpm");
+	load_img(game, &game->door, "./textures/door.xpm");
+	load_img(game, &game->collect, "./textures/collect.xpm");
+	load_img(game, &game->floor , "./textures/floor.xpm");
+	load_img(game, &game->wall ,"./textures/wall.xpm");
 }

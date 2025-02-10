@@ -22,20 +22,33 @@
 // 	return (ft_strncmp(name + len - 4, ".ber", 4) == 0);
 // }
 
-char	**read_map(char *ber)
+char	**read_map(const char *file)
 {
 	int		fd;
-	char	**map;
-	char	*line;
 	int		i;
+	char	*line;
+	char	**map;
+	int		lines;
 
 	i = 0;
-	fd = open(ber, O_RDONLY);
+	lines = 0;
+	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		return (ft_putstr_fd("[ERROR] CANNOT OPEN FILE\n", 2), NULL);
-	map = malloc(sizeof(char *) * 1024);
+		return (NULL);
+	line = get_next_line(fd);
+	while (line)
+	{
+		lines++;
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		return (NULL);
+	map = malloc(sizeof(char *) * (lines + 1));
 	if (!map)
-		return (ft_putstr_fd("[ERROR] FAILED ON MEMORY\n", 2), NULL);
+		return (NULL);
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
