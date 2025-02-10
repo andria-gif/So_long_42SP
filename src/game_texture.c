@@ -59,10 +59,10 @@ void	download_map_2(t_game *game) //função bi dimensional para alocar as image
 	int	x;
 	int	y;
 
-	y = 0;
+	x = 0;
 	while (x < game->height)
 	{
-		x = 0;
+		y = 0;
 		while (y < game->width)
 		{
 			download_img_maps(game, game->map[x][y], x, y);

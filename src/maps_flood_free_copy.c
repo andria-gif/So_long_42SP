@@ -58,5 +58,5 @@ int	flood_fill_maps(t_game *game, char **maps, int x, int y)
 	flood_fill_maps(game, maps, x - 1, y);
 	flood_fill_maps(game, maps, x, y + 1);
 	flood_fill_maps(game, maps, x, y - 1);
-	return (1); 
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:12:44 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/02/09 19:29:17 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:41:10 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ int	render_map_2(t_game *game, int x, int y)
 	{
 		printf("aqui fdp render 4\n");
 		x = 0;
-		while (game->map[x][y])
+		printf("Linha %d\n", y);
+		while (game->map[y][x])
 		{
-			render_map(game, game->map[x][y], x, y);
+			render_map(game, game->map[y][x], x, y);
 			x++;
 		}
 		y++;
@@ -57,8 +58,8 @@ void	loading_img(t_game *game, void **img, char *path)
 
 	x = TILE_SIZE;
 	y = TILE_SIZE;
-	img = mlx_xpm_file_to_image(game->mlx, path, &x, &y);
-	if (!img)
+	*img = mlx_xpm_file_to_image(game->mlx, path, &x, &y);
+	if (!*img)
 	{
 		ft_putstr_fd("Failed to load image\n", 2);
 		ft_putstr_fd(path, 2);

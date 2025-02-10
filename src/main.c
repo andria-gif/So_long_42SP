@@ -41,7 +41,7 @@ void	initializer_game(t_game *game, char *map_path)
 int	main(int argc, char **argv)
 {
 	t_game	*game;
-	void	*win_ptr;
+	// void	*win_ptr;
 
 	game = malloc(sizeof(t_game) * 1);
 	if (!game)

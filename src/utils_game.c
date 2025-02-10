@@ -12,17 +12,17 @@
 
 #include "../include/so_long.h"
 
-void	init_game(t_game *game)
-{
-	int	i;
+// void	init_game(t_game *game)
+// {
+// 	int	i;
 
-	i = -1;
-	game->moves_count = 0;
-	while (++i < 5)
-	{
-		game->imgs[i] = NULL;
-	}
-}
+// 	i = -1;
+// 	game->moves_count = 0;
+// 	while (++i < 5)
+// 	{
+// 		game->imgs[i] = NULL;
+// 	}
+// }
 
 void	to_clean_game(t_game *game)
 {
@@ -31,7 +31,7 @@ void	to_clean_game(t_game *game)
 	i = 0;
 	while (game->map[i])
 		free(game->map[i++]);
-	free(game->mlx);
+	free(game->map);
 	mlx_destroy_image(game->mlx, game->player);
 	mlx_destroy_image(game->mlx, game->wall);
 	mlx_destroy_image(game->mlx, game->floor);
@@ -48,7 +48,7 @@ int	exit_game(void *game)
 
 	game_ptr = (t_game *)game;
 	to_clean_game(game_ptr);
-	return (0);
+	exit(0);
 }
 
 // int	error_game(t_map *map, t_game game)
