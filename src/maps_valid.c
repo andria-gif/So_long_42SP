@@ -82,14 +82,14 @@ int	ofc_check_maps(t_game *game)
 	game = malloc(sizeof(t_game) * 1);
 	if (!game)
 		return (free(game), 0);
-	if (!check_ber(game))
-	{
-		return (ft_putstr_fd("ERROR: INVALID FILE EXTENSION\n", 2), 0);
-	}
-	if (!block_two_player(game))
-	{
-		return (ft_putstr_fd("ERROR: INVALID NUMBER OF PLAYERS\n", 2), 0);
-	}
+	// if (!check_ber(game))
+	// {
+	// 	return (ft_putstr_fd("ERROR: INVALID FILE EXTENSION\n", 2), 0);
+	// }
+	// if (!block_two_player(game))
+	// {
+	// 	return (ft_putstr_fd("ERROR: INVALID NUMBER OF PLAYERS\n", 2), 0);
+	// }
 	if (!retang_check_maps(game))
 	{
 		return (ft_putstr_fd("[ERROR] MAPS NOT RETANGLE\n", 2), 0);

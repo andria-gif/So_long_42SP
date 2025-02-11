@@ -14,20 +14,20 @@
 
 void	to_clean_game(t_game *game)
 {
-	// int		i;
+	int		i;
 
-	// i = 0;
-	// while (game->map[i])
-	// 	free(game->map[i++]);
-	// mlx_destroy_image(game->mlx, game->player);
-	// mlx_destroy_image(game->mlx, game->wall);
-	// mlx_destroy_image(game->mlx, game->floor);
-	// mlx_destroy_image(game->mlx, game->door);
-	// mlx_destroy_image(game->mlx, game->collect);
-	// mlx_destroy_window(game->mlx, game->window);
-	// mlx_destroy_display(game->mlx);
-	// free_maps(game->map, game->map_height);
-	// exit(0);
+	i = 0;
+	while (game->map[i])
+		free(game->map[i++]);
+	mlx_destroy_image(game->mlx, game->player);
+	mlx_destroy_image(game->mlx, game->wall);
+	mlx_destroy_image(game->mlx, game->floor);
+	mlx_destroy_image(game->mlx, game->door);
+	mlx_destroy_image(game->mlx, game->collect);
+	mlx_destroy_window(game->mlx, game->window);
+	mlx_destroy_display(game->mlx);
+	free_maps(game->map, game->map_height);
+	exit(0);
 }
 
 int	exit_game(void *game)
