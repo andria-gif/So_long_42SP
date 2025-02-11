@@ -31,11 +31,11 @@
 //s#define BUFFER_SIZE 1024
 
 // Definições de teclas
-#define KEY_ESC 65307
-#define KEY_W 119
-#define KEY_A 97
-#define KEY_S 115
-#define KEY_D 100
+# define KEY_ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
 
 typedef struct s_game
 {
@@ -54,6 +54,7 @@ typedef struct s_game
 	void		*window;
 	int			collectibles;
 	int			collectibles_count;
+	//int			count_player;
 	int			player_in_x;
 	int			player_in_y;
 	int			map_width;
@@ -110,5 +111,9 @@ int		get_map_height(t_game *game);
 int		get_map_widith(t_game *game);
 void	move_player(t_game *game, int x, int y);
 int		handle_keypress(int keycode, t_game *game);
+void	block_two_player(t_game *game);
+int		check_ber(char *map_path);
+int		free_maps(char **grid, int heigth);
+int		check_ber(char *map_path);
 
 #endif

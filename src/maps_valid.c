@@ -80,6 +80,16 @@ static int	components_check_maps(t_game *game)
 int	ofc_check_maps(t_game *game)
 {
 	game = malloc(sizeof(t_game) * 1);
+	if (!game)
+		return (free(game), 0);
+	if (!check_ber(game))
+	{
+		return (ft_putstr_fd("ERROR: INVALID FILE EXTENSION\n", 2), 0);
+	}
+	if (!block_two_player(game))
+	{
+		return (ft_putstr_fd("ERROR: INVALID NUMBER OF PLAYERS\n", 2), 0);
+	}
 	if (!retang_check_maps(game))
 	{
 		return (ft_putstr_fd("[ERROR] MAPS NOT RETANGLE\n", 2), 0);
@@ -96,5 +106,6 @@ int	ofc_check_maps(t_game *game)
 	{
 		return (ft_putstr_fd("[ERROR] MAPS NOT VISITED\n", 2), 0);
 	}
+	free_maps(game->map, game->map_height);
 	return (1);
 }

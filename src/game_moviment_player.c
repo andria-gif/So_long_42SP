@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 17:51:33 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/02/10 18:50:57 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/02/11 18:45:45 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	count_chars_game(char **map, char c)
 		while (map[i][j])
 		{
 			if (map[i][j] == c)
-			count++;
+				count++;
 			j++;
 		}
 		i++;

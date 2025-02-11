@@ -26,21 +26,21 @@ void	free_copy_maps(char **copy, int height)
 	free(copy);
 }
 
-// int	free_maps(char **grid, int heigth)
-// {
-// 	int	i;
+int	free_maps(char **grid, int heigth)
+{
+	int	i;
 
-// 	i = 0;
-// 	if (!grid)
-// 		return (0);
-// 	while (i < heigth && grid[i])
-// 	{
-// 		free(grid[i]);
-// 		i++;
-// 	}
-// 	free(grid);
-// 	return (1);
-// }
+	i = 0;
+	if (!grid)
+		return (0);
+	while (i < heigth && grid[i])
+	{
+		free(grid[i]);
+		i++;
+	}
+	free(grid);
+	return (1);
+}
 
 int	flood_fill_maps(t_game *game, char **maps, int x, int y)
 {

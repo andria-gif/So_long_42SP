@@ -48,7 +48,7 @@ char	**read_map(const char *file)
 		return (NULL);
 	map = malloc(sizeof(char *) * (lines + 1));
 	if (!map)
-		return (NULL);
+		return (free(map), NULL);
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
