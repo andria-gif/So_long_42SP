@@ -12,15 +12,26 @@
 
 #include "../include/so_long.h"
 
-// int	ber_validate(char *name)
-// {
-// 	size_t	len;
+static int	count_lines(const char *file)
+{
+	int		fd;
+	int		lines;
+	char	*line;
 
-// 	len = ft_strlen(name);
-// 	if (len < 4)
-// 		return (0);
-// 	return (ft_strncmp(name + len - 4, ".ber", 4) == 0);
-// }
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		return (-1);
+	lines = 0;
+	line = get_next_line(fd);
+	while (line)
+	{
+		lines++;
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (lines);
+}
 
 char	**read_map(const char *file)
 {
@@ -30,25 +41,16 @@ char	**read_map(const char *file)
 	char	**map;
 	int		lines;
 
-	i = 0;
-	lines = 0;
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
+	lines = count_lines(file);
+	if (lines == -1)
 		return (NULL);
-	line = get_next_line(fd);
-	while (line)
-	{
-		lines++;
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
 	map = malloc(sizeof(char *) * (lines + 1));
 	if (!map)
-		return (free(map), NULL);
+		return (NULL);
+	i = 0;
 	line = get_next_line(fd);
 	while (line != NULL)
 	{

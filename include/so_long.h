@@ -54,7 +54,8 @@ typedef struct s_game
 	void		*window;
 	int			collectibles;
 	int			collectibles_count;
-	//int			count_player;
+	int			count_player;
+	int			count_exit;
 	int			player_in_x;
 	int			player_in_y;
 	int			map_width;
@@ -117,7 +118,6 @@ int		free_maps(char **grid, int heigth);
 int		check_ber(char *map_path);
 int		check_player_count(t_game *game);
 int		check_line_lengths(t_game *game);
-int		validate_map(t_game *game);
-int		block_two_player(t_game *game);
+// int		block_two_player(t_game *game);
 
 #endif

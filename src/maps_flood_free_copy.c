@@ -16,10 +16,12 @@ void	free_copy_maps(char **copy, int height)
 {
 	int	i;
 
+	i = 0;
 	if (!copy)
 		return ;
-	for	(i = 0; i < height; i++)
+	while (i < height)
 	{
+		i++;
 		if (copy[i])
 			free(copy[i]);
 	}
