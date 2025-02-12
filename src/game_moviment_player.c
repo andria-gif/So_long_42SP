@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 17:51:33 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/02/11 18:56:05 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:00:44 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,19 @@ static void	update_game_state(t_game *game, int x, int y)
 
 void	move_player(t_game *game, int x, int y)
 {
-	//int	collectibles_remaining;
+	int	collectibles_remaining;
 
 	if (game->map[game->player_in_y + y][game->player_in_x + x] != '1')
 	{
 		update_game_state(game, x, y);
 	}
-	// collectibles_remaining = count_chars_game(game->map, 'C');
-	// ft_putstr_fd("Collectibles remaining: ", 1);
-	// ft_putnbr_fd(collectibles_remaining, 1);
-	// ft_putstr_fd("\n", 1);
-	ft_putstr_fd("Steps nubers: ", 1);
-	ft_putnbr_fd(game->moves_count, 1);
+	collectibles_remaining = count_chars_game(game->map, 'C');
+	ft_putstr_fd("Collectibles remaining: ", 1);
+	ft_putnbr_fd(collectibles_remaining, 1);
 	ft_putstr_fd("\n", 1);
+	// ft_putstr_fd("Steps nubers: ", 1);
+	// ft_putnbr_fd(game->moves_count, 1);
+	// ft_putstr_fd("\n", 1);
 }
 
 int	handle_keypress(int keycode, t_game *game)

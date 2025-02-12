@@ -44,7 +44,7 @@ static int	border_check_maps(t_game *game)
 		i++;
 	}
 	i = 0;
-	while (i < game->map_width)
+	while (i < game->map_height)
 	{
 		if (game->map[i][0] != '1' || game->map[i][game->map_width - 1] != '1')
 		{
@@ -82,30 +82,20 @@ int	ofc_check_maps(t_game *game)
 	game = malloc(sizeof(t_game) * 1);
 	if (!game)
 		return (free(game), 0);
-	// if (!check_ber(game))
-	// {
-	// 	return (ft_putstr_fd("ERROR: INVALID FILE EXTENSION\n", 2), 0);
-	// }
-	// if (!block_two_player(game))
-	// {
-	// 	return (ft_putstr_fd("ERROR: INVALID NUMBER OF PLAYERS\n", 2), 0);
-	// }
+	if (!block_two_player(game))
+		return (ft_putstr_fd("ERROR: INVALID NUMBER OF PLAYERS\n", 2), 0);
+	if (!check_line_lengths(game))
+		return (ft_putstr_fd("ERROR: ALL LINES MUST HAVE THE SAME LENGTH\n", 2), 0);
+	if (!validate_map(game))
+		return (ft_putstr_fd("ERROR: INVALID MAP\n", 2), 0);
 	if (!retang_check_maps(game))
-	{
 		return (ft_putstr_fd("[ERROR] MAPS NOT RETANGLE\n", 2), 0);
-	}
 	if (!border_check_maps(game))
-	{
 		return (ft_putstr_fd("[ERROR] INVALID BORDER MAPS\n", 2), 0);
-	}
 	if (!components_check_maps(game))
-	{
 		return (ft_putstr_fd("ERROR: NEED ALL COMPONENTS", 2), 0);
-	}
 	if (!flood_fill_maps(game, game->map, game->player_in_x, game->player_in_y))
-	{
 		return (ft_putstr_fd("[ERROR] MAPS NOT VISITED\n", 2), 0);
-	}
 	free_maps(game->map, game->map_height);
 	return (1);
 }

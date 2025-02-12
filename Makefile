@@ -24,7 +24,7 @@ RM			=	rm -rf
 H_DIR		=	include/
 HEADER		=	$(H_DIR)so_long.h
 
-MAPA_SRCS	=	main.c maps_read.c maps_valid.c utils_game.c render_map.c  maps_flood_free_copy.c maps_dimensions.c game_texture.c maps_window.c  game_position_player.c game_moviment_player.c
+MAPA_SRCS	=	main.c maps_read.c maps_valid.c utils_game.c render_map.c  maps_flood_free_copy.c maps_dimensions.c game_texture.c maps_window.c  game_position_player.c game_moviment_player.c maps_valid_2.c
 MAPA_DIR	=	src/
 OBJ_DIR		=	build/
 OBJ_M		=	$(addprefix $(OBJ_DIR), $(MAPA_SRCS:.c=.o))

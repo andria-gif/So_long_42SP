@@ -59,6 +59,7 @@ typedef struct s_game
 	int			player_in_y;
 	int			map_width;
 	int			map_height;
+	char		*map_path;
 	void		*mlx_ptr;
 	int			exits;
 }	t_game;
@@ -111,9 +112,12 @@ int		get_map_height(t_game *game);
 int		get_map_widith(t_game *game);
 void	move_player(t_game *game, int x, int y);
 int		handle_keypress(int keycode, t_game *game);
-void	block_two_player(t_game *game);
 int		check_ber(char *map_path);
 int		free_maps(char **grid, int heigth);
 int		check_ber(char *map_path);
+int		check_player_count(t_game *game);
+int		check_line_lengths(t_game *game);
+int		validate_map(t_game *game);
+int		block_two_player(t_game *game);
 
 #endif
