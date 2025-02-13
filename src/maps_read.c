@@ -32,7 +32,22 @@ static int	count_lines(const char *file)
 	close(fd);
 	return (lines);
 }
+static int	validate_player_map(char **map)
+{
+    int i, j;
+    int player_count = 0;
 
+    for (i = 0; map[i] != NULL; i++)
+    {
+        for (j = 0; map[i][j] != '\0'; j++)
+        {
+            if (map[i][j] == 'P')
+                player_count++;
+        }
+    }
+
+    return (player_count == 1);
+}
 char	**read_map(const char *file)
 {
 	int		fd;
@@ -60,5 +75,13 @@ char	**read_map(const char *file)
 	}
 	map[i] = NULL;
 	close(fd);
+	 if (!validate_player_map(map))
+    {
+        for (i = 0; map[i] != NULL; i++)
+            free(map[i]);
+        free(map);
+        fprintf(stderr, "Error: The map must have exactly one player.\n");
+        return (NULL);
+    }
 	return (map);
 }
