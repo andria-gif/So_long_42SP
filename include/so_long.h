@@ -87,7 +87,6 @@ enum e_texture_index
 };
 
 char	**read_map(const char *file);
-int		ofc_check_maps(t_game *game);
 void	free_copy_maps(char **copy, int height);
 int		dimenssions_map(t_game *game);
 void	init_game(t_game *game);
@@ -118,6 +117,7 @@ int		free_maps(char **grid, int heigth);
 int		check_ber(char *map_path);
 int		check_player_count(t_game *game);
 int		check_line_lengths(t_game *game);
-// int		block_two_player(t_game *game);
+int		check_map_integrity(t_game *game);
+
 
 #endif
