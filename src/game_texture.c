@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-void	load_textures(t_game *game) //função para carregar as texturas
+void	load_textures(t_game *game)
 {
 	int	size;
 
@@ -54,7 +54,7 @@ void	download_img_maps(t_game *game, int tile, int x, int y)
 			game->door, y * TILE_SIZE, x * TILE_SIZE);
 }
 
-void	download_map_2(t_game *game) //função bi dimensional para alocar as imagens no mapa
+void	download_map_2(t_game *game)
 {
 	int	x;
 	int	y;
@@ -73,7 +73,7 @@ void	download_map_2(t_game *game) //função bi dimensional para alocar as image
 	mlx_do_sync(game->mlx);
 }
 
-void	load_img(t_game *game, void **img, char *path) //funçã
+void	load_img(t_game *game, void **img, char *path)
 {
 	int	img_x;
 	int	img_y;
@@ -92,11 +92,6 @@ void	load_img(t_game *game, void **img, char *path) //funçã
 
 void	init_img(t_game *game)
 {
-	// load_img(game, &game->player, "./textures/player.xpm");
-	// load_img(game, &game->door, "./textures/door.xpm");
-	// load_img(game, &game->collect, "./textures/collect.xpm");
-	// load_img(game, &game->floor , "./textures/floor.xpm");
-	// load_img(game, &game->wall ,"./textures/wall.xpm");
 	load_img(game,(void **) &game->player, "./textures/player.xpm");
 	load_img(game,(void **) &game->door, "./textures/door.xpm");
 	load_img(game,(void **) &game->collect, "./textures/collect.xpm");

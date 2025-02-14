@@ -6,7 +6,7 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 17:51:33 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/02/13 18:20:34 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/02/13 21:35:46 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	count_chars_game(char **map, char c)
 	return (count);
 }
 
-static void	update_player_position(t_game *game, int new_x, int new_y)
+void	update_player_position(t_game *game, int new_x, int new_y)
 {
 	game->map[game->player_in_y][game->player_in_x] = '0';
 	game->player_in_x = new_x;
@@ -45,7 +45,7 @@ static void	update_player_position(t_game *game, int new_x, int new_y)
 	render_map_2(game);
 }
 
-static void	update_game_state(t_game *game, int x, int y)
+void	update_game_state(t_game *game, int x, int y)
 {
 	int	new_x;
 	int	new_y;

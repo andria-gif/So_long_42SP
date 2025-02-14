@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-static int	retang_check_maps(t_game *game)
+int	retang_check_maps(t_game *game)
 {
 	int	i;
 	int	line_size;
@@ -31,7 +31,7 @@ static int	retang_check_maps(t_game *game)
 	return (1);
 }
 
-static int	border_check_maps(t_game *game)
+int	border_check_maps(t_game *game)
 {
 	int	i;
 
@@ -52,7 +52,7 @@ static int	border_check_maps(t_game *game)
 	return (1);
 }
 
-static	int	components_check_maps(t_game *game)
+int	components_check_maps(t_game *game)
 {
 	int	i;
 	int	j;
@@ -82,6 +82,8 @@ static	int	components_check_maps(t_game *game)
 
 int	ofc_check_maps(t_game *game)
 {
+	if (!check_ber(game->map_path))
+		return (0);
 	if (!retang_check_maps(game))
 		return (0);
 	if (!border_check_maps(game))
