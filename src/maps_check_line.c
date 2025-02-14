@@ -6,24 +6,11 @@
 /*   By: arosa-di <arosa-di@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:50:25 by arosa-di          #+#    #+#             */
-/*   Updated: 2025/02/11 23:34:49 by arosa-di         ###   ########.fr       */
+/*   Updated: 2025/02/13 21:06:30 by arosa-di         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-// int	check_ber(char *map_path)
-// {
-// 	int	len ;
-
-// 	len = ft_strlen(map_path);
-// 	if (len < 4 || ft_strncmp(map_path + len - 4, ".ber") != 0)
-// 	{
-// 		ft_putstr_fd("Error: Invalid file extension. Must be .ber\n", 2);
-// 		return (0);
-// 	}
-// 	return (1);
-// }
 
 int	check_line_lengths(t_game *game)
 {

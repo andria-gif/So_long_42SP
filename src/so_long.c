@@ -14,30 +14,28 @@
 
 void	initializer_game(t_game *game, char *map_path)
 {
-	int	map_h_w;
-
-	map_h_w = 0;
 	game->map = read_map(map_path);
-	if (!game->map)
+	game->map_cpy = read_map(map_path);
+	if (!game->map || !game->map_cpy)
 	{
 		ft_putstr_fd("Error\nMap not loaded\n", 2);
 		exit(1);
 	}
-	// if (!ofc_check_maps(game))
-	// {
-	// 	ft_putstr_fd("Error\nInvalid map\n", 2);
-	// 	exit(1);
-	// }
-	map_h_w = dimenssions_map(game);
+	dimenssions_map(game);
+	game->player_in_x = player_position_x(game->map);
+	game->player_in_y = player_position_y(game->map);
+	game->collectibles = count_chars_game(game->map, 'C');
+	if (!ofc_check_maps(game))
+	{
+		ft_putstr_fd("Error\nInvalid map\n", 2);
+		exit(1);
+	}
 	game->mlx = mlx_init();
 	if (!game->mlx)
 	{
 		ft_putstr_fd("Error\nmlx not initialized\n", 2);
 		exit(1);
 	}
-	game->player_in_x = player_position_x(game->map);
-	game->player_in_y = player_position_y(game->map);
-	game->collectibles = count_chars_game(game->map, 'C');
 	game->window = mlx_new_window(game->mlx, game->map_width * TILE_SIZE,
 			game->map_height * TILE_SIZE, "window");
 	load_textures(game);

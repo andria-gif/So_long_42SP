@@ -45,6 +45,7 @@ typedef struct s_game
 	int			*moves_text;
 	int			*imgs[5];
 	char		**map;
+	char		**map_cpy;
 	void		*player;
 	void		*collect;
 	void		*door;
@@ -118,6 +119,6 @@ int		check_ber(char *map_path);
 int		check_player_count(t_game *game);
 int		check_line_lengths(t_game *game);
 int		check_map_integrity(t_game *game);
-
-
+int		ofc_check_maps(t_game *game);
+int		check_exit(t_game *game);
 #endif

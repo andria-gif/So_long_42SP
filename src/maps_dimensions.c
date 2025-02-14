@@ -42,8 +42,5 @@ int	dimenssions_map(t_game *game)
 	game->map_width = get_map_height(game);
 	game->map_height = get_map_widith(game);
 	game->map_width -= 2;
-	// mlx_destroy_window(mlx_ptr, win_ptr);
-	// mlx_destroy_display(mlx_ptr);
-	// free(game->mlx_ptr);
 	return (0);
 }
